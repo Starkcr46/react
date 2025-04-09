@@ -27,8 +27,23 @@ function Board({ xIsNext, squares, onPlay }) {
   let status;
   if (winner) {
     status = 'Winner: ' + winner;
-  } else {
-    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+  } 
+  else {
+  
+    let finished = true;
+  
+    for (let i = 0; i < squares.length; i++) {
+        if(squares[i] == null){
+            finished = false;
+            break;
+        }
+    }
+    if(!finished){
+         status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+    }
+    else{
+         status = "Draw";
+    }
   }
 
   return (
@@ -73,7 +88,8 @@ export default function Game() {
     let description;
     if (move > 0) {
       description = 'Go to move #' + move;
-    } else {
+    } 
+    else {
       description = 'Go to game start';
     }
     return (
