@@ -13,7 +13,7 @@ const btnValues = [
   [7, 8, 9, "X"],
   [4, 5, 6, "-"],
   [1, 2, 3, "+"],
-  [0, ".", "="],
+  [0, ".", "**", "MOD", "="],
 ];
 
 const toLocaleString = (num) =>
@@ -22,7 +22,7 @@ const toLocaleString = (num) =>
 const removeSpaces = (num) => num.toString().replace(/\s/g, "");
 
 const math = (a, b, sign) =>
-  sign === "+" ? a + b : sign === "-" ? a - b : sign === "X" ? a * b : a / b;
+  sign === "+" ? a + b : sign === "-" ? a - b : sign === "X" ? a * b : sign === "**" ? a ** b : sign === "MOD" ? a % b : a / b;
 
 const zeroDivisionError = "Can't divide with 0";
 
@@ -135,7 +135,7 @@ const App = () => {
       ? percentClickHandler()
       : btn === "="
       ? equalsClickHandler()
-      : btn === "/" || btn === "X" || btn === "-" || btn === "+"
+      : btn === "/" || btn === "X" || btn === "-" || btn === "+" || btn === "**" || btn === "MOD"
       ? signClickHandler(e)
       : btn === "."
       ? comaClickHandler(e)
