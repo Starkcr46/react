@@ -36,7 +36,6 @@ function MyComponent() {
       {data && (
         <ul>
           {data.map(item => (
-           // <li key={item.id}>{item.name}</li>
            <li key={item.id}><b>Title:</b> {item.title}
            <br>
            </br>
