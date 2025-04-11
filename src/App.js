@@ -111,6 +111,11 @@ export default function Game() {
   );
 }
 
+export function forEach(items, callback) {
+  for (const item of items) {
+    callback(item);
+  }
+}
 function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],
@@ -130,3 +135,4 @@ function calculateWinner(squares) {
   }
   return null;
 }
+export { calculateWinner, testFunc };
