@@ -9,13 +9,9 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState([]);
 
-
- 
-
   useEffect(() => {
 
-
-    async function postData(len) {
+    async function postData() {
       const { data, error } = await supabase
         .from('reactTest')
         .insert([
@@ -24,7 +20,6 @@ function App() {
         .select();
     
       if (error) {
-       setError(len);
         console.error('Error inserting data:', error);
       } else {
      
@@ -50,8 +45,7 @@ function App() {
 
     postData();
     fetchData();
-    
-    
+
   }, []);
 
   if (loading) {
@@ -71,6 +65,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;
