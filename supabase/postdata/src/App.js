@@ -17,9 +17,9 @@ function App() {
 
     async function postData(len) {
       const { data, error } = await supabase
-        .from('car_parts_monthly_sales')
+        .from('reactTest')
         .insert([
-          {id: len, parts_id: 5673, date: '2003-01-01', volume: 9 },
+          {length: 5, width: 4, height: 9, message: "Test" },
         ])
         .select();
     
@@ -34,7 +34,7 @@ function App() {
     async function fetchData() {
       try {
         const { data: items, error } = await supabase
-          .from('car_parts_monthly_sales')
+          .from('reactTest')
           .select('*');
 
         if (error) {
@@ -60,10 +60,10 @@ function App() {
 
   return (
     <div className="App">
-      <table><tr><td><b>ID</b></td><td><b>Parts ID</b></td><td><b>Date</b></td><td><b>Volume</b></td></tr>
+      <table><tr><td><b>ID</b></td><td><b>Length</b></td><td><b>width</b></td><td><b>Height</b></td><td><b>Message</b></td></tr>
       {data.map(item => (
 
-        <tr><td><li key={item.id}>{item.id}</li></td><td>{item.parts_id}</td><td>{item.date}</td><td>{item.volume}</td></tr>
+        <tr><td><li key={item.id}>{item.id}</li></td><td>{item.length}</td><td>{item.width}</td><td>{item.height}</td><td>{item.message}</td></tr>
       ))}
       </table>
 
