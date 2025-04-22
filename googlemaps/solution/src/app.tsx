@@ -32,7 +32,7 @@ const center = {
 
 
 const App = () => (
-  <APIProvider apiKey={'API KEY'} onLoad={() => console.log('Maps API has loaded.')}>
+  <APIProvider apiKey={'AIzaSyD32tnNSSvJpjZKzTdHab_aj3kQ6jU8BbU'} onLoad={() => console.log('Maps API has loaded.')}>
     <Map
       defaultZoom={13}
       defaultCenter={{ lat: 27.8640895, lng: -82.4969538 }}
