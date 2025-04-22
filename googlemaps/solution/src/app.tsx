@@ -9,12 +9,12 @@ import {
   useMap,
   AdvancedMarker,
   MapCameraChangedEvent,
-  Pin
+  Pin,
+  InfoWindow
 } from '@vis.gl/react-google-maps';
 
 import {MarkerClusterer} from '@googlemaps/markerclusterer';
 import type {Marker} from '@googlemaps/markerclusterer';
-
 import {Circle} from './components/circle'
 
 type Poi ={ key: string, location: google.maps.LatLngLiteral }
@@ -24,9 +24,15 @@ const locations: Poi[] = [
   {key: 'SOCCENT', location: { lat: 27.858740, lng: -82.496532 }},
   {key: 'My House', location: { lat: 28.086219, lng: -82.574371 }},
 ];
+const center = {
+  lat:  27.861920,
+  lng: -82.509079,
+};
+
+
 
 const App = () => (
-  <APIProvider apiKey={'AIzaSyD32tnNSSvJpjZKzTdHab_aj3kQ6jU8BbU'} onLoad={() => console.log('Maps API has loaded.')}>
+  <APIProvider apiKey={'API KEY'} onLoad={() => console.log('Maps API has loaded.')}>
     <Map
       defaultZoom={13}
       defaultCenter={{ lat: 27.8640895, lng: -82.4969538 }}
@@ -34,6 +40,7 @@ const App = () => (
         console.log('camera changed:', ev.detail.center, 'zoom:', ev.detail.zoom)
       }
       mapId='da37f3254c6a6d1c'
+      
       >
     <PoiMarkers pois={locations} />
     </Map>
@@ -99,10 +106,15 @@ const PoiMarkers = (props: { pois: Poi[] }) => {
           ref={marker => setMarkerRef(marker, poi.key)}
           clickable={true}
           onClick={handleClick}
+          title={poi.key}
           >
-            <Pin background={'#FBBC04'} glyphColor={'#000'} borderColor={'#000'} />
+            <Pin background={'#FBBC04'} glyphColor={'#000'} borderColor={'#000'}  />
+            
         </AdvancedMarker>
+         
+       
       ))}
+      
     </>
   );
 };
